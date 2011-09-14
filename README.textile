@@ -36,4 +36,4 @@ $ ./copypasta.py clap-your-hands.txt.cp
 
 h2. Syntax
 
-Inside the <tt>for</tt> block, the values are interpreted as JSON. When you refer to variables, such as <tt>#{x[0]}</tt>, Python syntax is required.
+Inside the <tt>for</tt> block, the values are interpreted as JSON. When you refer to variables, such as <tt>#{x}</tt>, Python syntax is required.
