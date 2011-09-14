@@ -1,6 +1,6 @@
 h1. This is copypasta
 
-Copypasta is a straightforward way to implement for loops in text files. 
+Copypasta is a straightforward way to implement for loops in text files. For example,
 
 <pre>
 #{for x in [["happy", "clap", "hands"], ["angry", "stomp", "feet"]]}
@@ -26,9 +26,14 @@ If you're angry and you know it then you surely want to show it
 If you're angry and you know it stomp your feet.
 </pre>
 
+The leading blank line results from the newline after the for block.
+
 Call with:
 
 <pre>
 $ ./copypasta.py clap-your-hands.txt.cp
 </pre>
 
+h2. Syntax
+
+Inside the <tt>for</tt> block, the values are interpreted as JSON. When you refer to variables, such as <tt>#{x[0]}</tt>, Python syntax is required.
