@@ -12,6 +12,7 @@ with open(sys.argv[1], 'r') as f:
 def parseCommandChunk(s):
     chunk = s
     command = chunk.replace('#{', '', 1)[:-1].strip()
+    fullCommand = command
     token = command.split()[0]
     command = command.replace(token, '', 1).strip()
     if token == 'for':
@@ -27,7 +28,7 @@ def parseCommandChunk(s):
     elif token == 'end':
         return [None, 'end']
     else:
-        return [None, 'var', token]
+        return [None, 'var', fullCommand]
     
 chunkList = []
     
