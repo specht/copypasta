@@ -1,18 +1,19 @@
-This is copypasta
------------------
+h1. This is copypasta
 
 Copypasta is a straightforward way to implement for loops in text files. 
 
-An example:
-
+<pre>
 #{for x in [["happy", "clap", "hands"], ["angry", "stomp", "feet"]]}
 If you're #{x[0]} and you know it #{x[1]} your #{x[2]}!
 If you're #{x[0]} and you know it #{x[1]} your #{x[2]}!
 If you're #{x[0]} and you know it then you surely want to show it
 If you're #{x[0]} and you know it #{x[1]} your #{x[2]}.
 #{end}
+</pre>
 
 becomes:
+
+<pre>
 
 If you're happy and you know it clap your hands!
 If you're happy and you know it clap your hands!
@@ -23,5 +24,11 @@ If you're angry and you know it stomp your feet!
 If you're angry and you know it stomp your feet!
 If you're angry and you know it then you surely want to show it
 If you're angry and you know it stomp your feet.
+</pre>
 
+Call with:
+
+<pre>
+$ ./copypasta.py clap-your-hands.txt.cp
+</pre>
 
