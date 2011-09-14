@@ -4,33 +4,20 @@
 import sys
 import json
 
-OPEN = '{'
+OPEN = '#{'
 CLOSE = '}'
 
 if (len(sys.argv) > 1):
-    if sys.argv[1] == '--paren':
+    if sys.argv[1] == '--tags':
         del(sys.argv[1])
-        OPEN = '('
-        CLOSE = ')'
-    elif sys.argv[1] == '--square':
+        OPEN = sys.argv[1]
         del(sys.argv[1])
-        OPEN = '['
-        CLOSE = ']'
-    elif sys.argv[1] == '--curly':
+        CLOSE = sys.argv[1]
         del(sys.argv[1])
-        OPEN = '{'
-        CLOSE = '}'
-    elif sys.argv[1] == '--angle':
-        del(sys.argv[1])
-        OPEN = '<'
-        CLOSE = '>'
 
 if len(sys.argv) < 2:
-    print("Usage: copypasta.py [--paren|--square|--curly] [input file]")
-    print(" --curly:  #{ ... } (default)")
-    print(" --paren:  #( ... )")
-    print(" --square: #[ ... ]")
-    print(" --angle:  #< ... >")
+    print("Usage: copypasta.py [--tags OPEN CLOSE] [input file]")
+    print("  You may specify your own OPEN and CLOSE tags, by default they are '#{' and '}'.")
     exit(1)
     
 # read entire file
@@ -40,7 +27,7 @@ with open(sys.argv[1], 'r') as f:
     
 def parseCommandChunk(s):
     chunk = s
-    command = chunk.replace('#' + OPEN, '', 1)[:-1].strip()
+    command = chunk.replace(OPEN, '', 1)[:-1].strip()
     fullCommand = command
     token = command.split()[0]
     command = command.replace(token, '', 1).strip()
@@ -66,11 +53,11 @@ i = -1
 while True:
     chunkStart = i + 1
     try:
-        i = text.index('#' + OPEN, i + 1)
+        i = text.index(OPEN, i + 1)
     except:
         break
     length = 2
-    while (text[i:(i+length)].count(OPEN) != text[i:(i+length)].count(CLOSE)):
+    while (text[i:(i+length)].count(OPEN[-1]) != text[i:(i+length)].count(CLOSE)):
         length += 1
     # append preceding text chunk
     chunkList.append([text[chunkStart:i], 'text'])
