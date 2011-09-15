@@ -3,11 +3,8 @@ h1. This is copypasta
 Copypasta is a straightforward way to implement for loops in text files. For example,
 
 <pre>
-#{for x in [["happy", "clap", "hands"], ["angry", "stomp", "feet"]]}
-If you're #{x[0]} and you know it #{x[1]} your #{x[2]}!
-If you're #{x[0]} and you know it #{x[1]} your #{x[2]}!
-If you're #{x[0]} and you know it then you surely want to show it
-If you're #{x[0]} and you know it #{x[1]} your #{x[2]}.
+#{for i in range(5)}
+#{i + 1}, check!
 #{end}
 </pre>
 
@@ -15,15 +12,15 @@ becomes:
 
 <pre>
 
-If you're happy and you know it clap your hands!
-If you're happy and you know it clap your hands!
-If you're happy and you know it then you surely want to show it
-If you're happy and you know it clap your hands.
+1, check!
 
-If you're angry and you know it stomp your feet!
-If you're angry and you know it stomp your feet!
-If you're angry and you know it then you surely want to show it
-If you're angry and you know it stomp your feet.
+2, check!
+
+3, check!
+
+4, check!
+
+5, check!
 </pre>
 
 The leading blank line results from the newline after the for block.
@@ -31,9 +28,9 @@ The leading blank line results from the newline after the for block.
 Call with:
 
 <pre>
-$ ./copypasta.py clap-your-hands.txt.cp
+$ ./copypasta.py test-range.txt.cp
 </pre>
 
 h2. Syntax
 
-Inside the <tt>for</tt> block, the values are interpreted as JSON. When you refer to variables, such as <tt>#{x}</tt>, Python syntax is required.
+You can start a for loop with @for [key] in [values]@ where values should be something which is iterable in Python, such as a list or a range. Every @for@ statement must be matched with an @end@ statement.

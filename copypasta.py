@@ -6,7 +6,6 @@ For loops for text files!
 """
 
 import sys
-import json
 
 OPEN = '#{'
 CLOSE = '}'
@@ -27,7 +26,7 @@ def parse_command_chunk(chunk):
             sys.stderr.write("Error: 'in' expected.\n")
             exit(1)
         command = command.replace(in_check, '', 1).strip()
-        values = json.loads(command)
+        values = eval(command)
         return [None, 'for', key, values]
     elif token == 'end':
         return [None, 'end']
