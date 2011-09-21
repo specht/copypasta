@@ -90,6 +90,9 @@ def handle_file(path):
         while (whole_text[i:(i+length)].count(OPEN[-1]) != 
             whole_text[i:(i+length)].count(CLOSE)):
             length += 1
+            if (i + length >= len(whole_text)):
+                sys.stderr.write("Running out of text while looking for matching `" + CLOSE + "`.\n")
+                exit(1)
         # append preceding text chunk
         chunk_list.append([whole_text[chunk_start:i], 'text'])
         # append #{ ... } chunk
